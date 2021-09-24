@@ -5,16 +5,16 @@ import io.ktor.application.install
 import io.ktor.features.ContentNegotiation
 import io.ktor.serialization.json
 import io.ktor.server.netty.EngineMain
-import jr.com.br.routes.registerCustomerRoutes
-import jr.com.br.routes.registerOrderRoutes
+import jr.com.br.routes.registerCitiesDataRoutes
+import jr.com.br.routes.registerCityRoutes
 
 fun main(args: Array<String>): Unit = EngineMain.main(args)
 
 
-fun Application.module(testing: Boolean = true) {
+fun Application.module() {
     install(ContentNegotiation) {
         json()
     }
-    registerCustomerRoutes()
-    registerOrderRoutes()
+    registerCityRoutes()
+    registerCitiesDataRoutes()
 }

@@ -4,13 +4,10 @@ import com.typesafe.config.ConfigFactory
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import io.ktor.config.*
-import jr.com.br.entity.Product
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
-import java.sql.Connection
 
 object DatabaseFactory {
     private val appConfig = HoconApplicationConfig(ConfigFactory.load())

@@ -24,8 +24,11 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("io.ktor:ktor-serialization:$ktor_version")
 
-//    implementation("io.ktor:ktor-server-content-negotiation:$ktor_version")
-//    implementation("io.ktor:ktor-shared-serialization-kotlinx:$ktor_version")
+    implementation("org.jetbrains.exposed:spring-transaction:0.35.1")
+    implementation("com.zaxxer:HikariCP:3.4.5")
+    implementation("org.postgresql:postgresql:42.2.2")
+
+    implementation("org.kodein.di:kodein-di-framework-ktor-server-jvm:7.0.0")
 
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlin_version")

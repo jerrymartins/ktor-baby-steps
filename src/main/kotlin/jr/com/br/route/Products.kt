@@ -1,21 +1,34 @@
-package jr.com.br.routes
+package jr.com.br.route
 
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
-import jr.com.br.models.City
-import jr.com.br.models.cities
+import jr.com.br.model.City
+import jr.com.br.model.cities
+import jr.com.br.service.impl.ProductService
+import kotlinx.coroutines.runBlocking
+import org.kodein.di.instance
+import org.kodein.di.ktor.di
 
 
 fun Route.cityRouting() {
-    route("/cities") {
+    //val productService by di().instance<ProductService>()
+    val productService = ProductService()
+
+    route("/products") {
         get {
+
+//            runBlocking {
+//                val id = productService.productInsert()
+//                print(id)
+//            }
+
             if (cities.isNotEmpty()) {
-                call.respond(cities)
+                call.respond(productService.productInsert())
             } else {
-                call.respondText("No cities found", status = HttpStatusCode.NotFound)
+                call.respondText("No products found", status = HttpStatusCode.NotFound)
             }
         }
         get("{id}") {

@@ -1,44 +1,21 @@
 package jr.com.br.service.impl
 
-import jr.com.br.config.DatabaseFactory.dbQuery
-import jr.com.br.entity.Product
+import jr.com.br.config.bind.repositoryBind
 import jr.com.br.model.ProductModel
-import org.jetbrains.exposed.sql.SchemaUtils
-import org.jetbrains.exposed.sql.insert
-import org.jetbrains.exposed.sql.deleteWhere
-import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.selectAll
-import org.jetbrains.exposed.sql.ResultRow
+import jr.com.br.repository.ProductPort
+import jr.com.br.service.ProductHandle
+import org.kodein.di.instance
 import java.util.UUID
 
-class ProductService {
+class ProductService: ProductHandle {
+    private val productRepository: ProductPort by repositoryBind.di.instance()
 
-    suspend fun insert(productModel: ProductModel) = dbQuery {
-        SchemaUtils.create(Product)
+    override suspend fun insert(productModel: ProductModel) = productRepository.insert(productModel)
 
-        Product.insert {
-            it[id] = UUID.randomUUID()
-            it[name] = productModel.name
-            it[price] = productModel.price
-        } get Product.id
-    }
+    override suspend fun delete(id: UUID) = productRepository.delete(id)
 
-    suspend fun delete(id: UUID) = dbQuery {
-        Product.deleteWhere { Product.id eq id }
-    }
+    override suspend fun getById(id: UUID) = productRepository.getById(id)
 
-    suspend fun getById(id: UUID)= dbQuery {
-        Product.select { Product.id eq id }.mapNotNull { toProductModel(it) }
-    }
-
-    suspend fun listAllPaged(limit: Int, offset: Long) = dbQuery {
-        Product.selectAll().limit(limit, offset).map { toProductModel(it) }
-    }
-    
-    private fun toProductModel(row: ResultRow) = ProductModel(
-        id = row[Product.id],
-        name = row[Product.name],
-        price = row[Product.price]
-    )
+    override suspend fun listAllPaged(limit: Int, offset: Long) = productRepository.listAllPaged(limit, offset)
 
 }

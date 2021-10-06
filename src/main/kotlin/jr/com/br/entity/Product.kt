@@ -1,7 +1,5 @@
 package jr.com.br.entity
 
-import jr.com.br.config.UUIDSerializer
-import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.sql.Table
 
 object Product: Table() {

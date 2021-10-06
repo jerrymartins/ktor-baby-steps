@@ -1,4 +1,4 @@
-package jr.com.br.service.impl
+package jr.com.br.service
 
 import jr.com.br.config.bind.repositoryBind
 import jr.com.br.model.ProductModel

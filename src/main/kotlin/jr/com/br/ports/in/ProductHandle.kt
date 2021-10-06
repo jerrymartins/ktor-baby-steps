@@ -1,4 +1,4 @@
-package jr.com.br.service
+package jr.com.br.ports.`in`
 
 import jr.com.br.model.ProductModel
 import java.util.UUID

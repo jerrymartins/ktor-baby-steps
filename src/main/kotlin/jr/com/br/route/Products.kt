@@ -14,8 +14,7 @@ import io.ktor.routing.post
 import io.ktor.routing.delete
 import jr.com.br.config.bind.serviceBind
 import jr.com.br.model.ProductModel
-import jr.com.br.service.ProductHandle
-import jr.com.br.service.impl.ProductService
+import jr.com.br.ports.`in`.ProductHandle
 import org.kodein.di.instance
 import java.util.UUID
 

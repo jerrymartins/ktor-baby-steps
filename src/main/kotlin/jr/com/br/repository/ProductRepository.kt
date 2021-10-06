@@ -3,6 +3,7 @@ package jr.com.br.repository
 import jr.com.br.config.DatabaseFactory
 import jr.com.br.entity.Product
 import jr.com.br.model.ProductModel
+import jr.com.br.ports.out.ProductPort
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.deleteWhere

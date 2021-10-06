@@ -2,8 +2,8 @@ package jr.com.br.service.impl
 
 import jr.com.br.config.bind.repositoryBind
 import jr.com.br.model.ProductModel
-import jr.com.br.repository.ProductPort
-import jr.com.br.service.ProductHandle
+import jr.com.br.ports.out.ProductPort
+import jr.com.br.ports.`in`.ProductHandle
 import org.kodein.di.instance
 import java.util.UUID
 

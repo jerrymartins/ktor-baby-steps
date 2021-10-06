@@ -1,4 +1,4 @@
-package jr.com.br.repository
+package jr.com.br.ports.out
 
 import jr.com.br.model.ProductModel
 import java.util.UUID

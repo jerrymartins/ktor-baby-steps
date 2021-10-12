@@ -28,6 +28,8 @@ dependencies {
     implementation("com.zaxxer:HikariCP:3.4.5")
     implementation("org.postgresql:postgresql:42.2.2")
 
+    implementation("org.apache.kafka:kafka-clients:3.0.0")
+
     implementation("org.kodein.di:kodein-di:7.8.0")
 
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")

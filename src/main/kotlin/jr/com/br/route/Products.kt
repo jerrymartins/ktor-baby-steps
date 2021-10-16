@@ -42,8 +42,7 @@ fun Route.productRouting() {
 
         post {
             val product = call.receive<ProductModel>()
-            productService.insert(product)
-            call.respondText(text = "Product stored correctly", status = HttpStatusCode.Created)
+            call.respond(productService.insert(product))
         }
         delete("{id}") {
             val id = call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)

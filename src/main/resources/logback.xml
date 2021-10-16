@@ -1,27 +1,27 @@
 <configuration>
-<!--    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">-->
-<!--        <encoder>-->
-<!--            <pattern>%d{YYYY-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>-->
-<!--        </encoder>-->
-<!--    </appender>-->
-<!--    <root level="trace">-->
-<!--        <appender-ref ref="STDOUT"/>-->
-<!--    </root>-->
-<!--    <logger name="org.eclipse.jetty" level="INFO"/>-->
-<!--    <logger name="io.netty" level="INFO"/>-->
-
-
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <!-- ... appender config, up to you ... -->
+        <encoder>
+            <pattern>%d{YYYY-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
     </appender>
-
-    <!-- Set Exposed logger on INFO level  -->
-    <logger name="Exposed" level="info" additivity="false">
-        <appender-ref ref="STDOUT"/>
-    </logger>
-
-    <!-- Set root logger on another level  -->
-    <root level="debug">
+    <root level="trace">
         <appender-ref ref="STDOUT"/>
     </root>
+    <logger name="org.eclipse.jetty" level="INFO"/>
+    <logger name="io.netty" level="INFO"/>
+
+
+<!--    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">-->
+<!--        &lt;!&ndash; ... appender config, up to you ... &ndash;&gt;-->
+<!--    </appender>-->
+
+<!--    &lt;!&ndash; Set Exposed logger on INFO level  &ndash;&gt;-->
+<!--    <logger name="Exposed" level="info" additivity="false">-->
+<!--        <appender-ref ref="STDOUT"/>-->
+<!--    </logger>-->
+
+<!--    &lt;!&ndash; Set root logger on another level  &ndash;&gt;-->
+<!--    <root level="debug">-->
+<!--        <appender-ref ref="STDOUT"/>-->
+<!--    </root>-->
 </configuration>

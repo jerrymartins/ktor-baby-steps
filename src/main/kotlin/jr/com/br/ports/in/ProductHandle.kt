@@ -4,7 +4,7 @@ import jr.com.br.model.ProductModel
 import java.util.UUID
 
 interface ProductHandle {
-    suspend fun insert(productModel: ProductModel): UUID
+    suspend fun insert(productModel: ProductModel): ProductModel
 
     suspend fun delete(id: UUID): Int
 

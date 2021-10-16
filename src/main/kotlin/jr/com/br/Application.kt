@@ -9,10 +9,7 @@ import jr.com.br.kafka.consumeMessages
 import jr.com.br.kafka.createConsumer
 import jr.com.br.route.registerCityRoutes
 
-fun main(args: Array<String>): Unit {
-    createConsumer().consumeMessages("ECOMMERCE_NEW_ORDER")
-    return EngineMain.main(args)
-}
+fun main(args: Array<String>) = EngineMain.main(args)
 
 
 fun Application.module() {
@@ -20,4 +17,5 @@ fun Application.module() {
         json()
     }
     registerCityRoutes()
+    //createConsumer().consumeMessages("ECOMMERCE_NEW_ORDER")
 }

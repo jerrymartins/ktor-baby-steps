@@ -10,17 +10,20 @@ import org.jetbrains.exposed.sql.deleteWhere
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.ResultRow
+import org.jetbrains.exposed.sql.statements.InsertStatement
 import java.util.UUID
 
 object ProductRepository: ProductPort {
     override suspend fun insert(productModel: ProductModel) = DatabaseFactory.dbQuery {
         SchemaUtils.create(Product)
 
-        Product.insert {
+        val inserted = Product.insert {
             it[id] = UUID.randomUUID()
             it[name] = productModel.name
             it[price] = productModel.price
-        } get Product.id
+        }
+
+        toProductModel(inserted)
     }
 
     override suspend fun delete(id: UUID) = DatabaseFactory.dbQuery {
@@ -36,6 +39,12 @@ object ProductRepository: ProductPort {
     }
 
     private fun toProductModel(row: ResultRow) = ProductModel(
+        id = row[Product.id],
+        name = row[Product.name],
+        price = row[Product.price]
+    )
+
+    private fun toProductModel(row: InsertStatement<Number>) = ProductModel(
         id = row[Product.id],
         name = row[Product.name],
         price = row[Product.price]
